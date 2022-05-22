@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom'
+import './App.css'
+import AdminRoute from './authentication/AdminRoute'
+import PrivateRoute from './authentication/PrivateRoute'
+import { publicRoute } from './routes/publicRoute'
+import { privateRoutes } from './routes/privateRoutes'
+import Navbar from './components/Navbar'
+import AddAdmin from './pages/Dashboard/AddAdmin '
+import AddService from './pages/Dashboard/AddService '
+import Dashboard from './pages/Dashboard/Dashboard '
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Navbar>
+            <Routes>
+                {publicRoute.map(({ path, Component }, index) => (
+                    <Route key={index} path={path} element={<Component />} />
+                ))}
+                <Route element={<PrivateRoute />}>
+                    {privateRoutes.map(({ path, Component }, index) => (
+                        <Route
+                            key={index}
+                            path={path}
+                            element={<Component />}
+                        />
+                    ))}
+                </Route>
+                <Route element={<AdminRoute />}>
+                    <Route path="/dashboard" element={<Dashboard />}>
+                        <Route path="add-admin" element={<AddAdmin />} />
+                        <Route path="add-service" element={<AddService />} />
+                    </Route>
+                </Route>
+            </Routes>
+        </Navbar>
+    )
 }
 
-export default App;
+export default App
