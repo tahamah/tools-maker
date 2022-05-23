@@ -8,7 +8,7 @@ import 'swiper/css/scrollbar'
 
 const Banner = () => {
     return (
-        <div className="md:h-[100vh] overflow-hidden bg-gray-600 mt-14 md:mt-0 w-full">
+        <div className="md:h-[100vh] overflow-hidden bg-[#011520] mt-14 md:mt-0 w-full">
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                 navigation
