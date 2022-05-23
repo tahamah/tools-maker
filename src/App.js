@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import PrivateRoute from './authentication/PrivateRoute'
+
 import { publicRoute } from './routes/publicRoute'
 import { privateRoutes } from './routes/privateRoutes'
 import Navbar from './components/Navbar'
@@ -10,6 +10,7 @@ import AdminRoute from './authentication/AdminRoute'
 import AddAdmin from './pages/Dashboard/AddAdmin '
 import AddService from './pages/Dashboard/AddService '
 import Dashboard from './pages/Dashboard/Dashboard '
+import RequireAuth from './pages/Login/RequireAuth'
 
 function App() {
     return (
@@ -18,7 +19,7 @@ function App() {
                 {publicRoute.map(({ path, Component }, index) => (
                     <Route key={index} path={path} element={<Component />} />
                 ))}
-                <Route element={<PrivateRoute />}>
+                <Route element={<RequireAuth />}>
                     {privateRoutes.map(({ path, Component }, index) => (
                         <Route
                             key={index}

@@ -2,11 +2,17 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import useAdmin from '../hooks/useAdmin'
 import { useLocation } from 'react-router-dom'
+import auth from '../firebase.init'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { signOut } from 'firebase/auth'
 
 const Navbar = ({ children }) => {
+    const [user] = useAuthState(auth)
+    console.log(user)
     const { pathname } = useLocation()
-    console.log(pathname)
-
+    const logout = () => {
+        signOut(auth)
+    }
     const [admin] = useAdmin()
     const navItems = (
         <>
@@ -38,9 +44,15 @@ const Navbar = ({ children }) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/login" className="rounded-lg">
-                    Login
-                </NavLink>
+                {user ? (
+                    <button className="rounded-lg" onClick={logout}>
+                        Logout
+                    </button>
+                ) : (
+                    <NavLink to="/login" className="rounded-lg">
+                        Login
+                    </NavLink>
+                )}
             </li>
         </>
     )
@@ -104,7 +116,6 @@ const Navbar = ({ children }) => {
             <div class="drawer-side">
                 <label for="my-drawer-3" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100">
-                    {' '}
                     {navItems}
                 </ul>
             </div>
