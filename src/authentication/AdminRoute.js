@@ -8,7 +8,6 @@ const AdminRoute = () => {
     if (!admin) {
         return <Navigate to="/" replace />
     }
-
     return <Outlet />
 }
 

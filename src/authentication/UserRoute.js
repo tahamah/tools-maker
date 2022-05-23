@@ -4,7 +4,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import auth from '../firebase.init'
 import Spinner from '../pages/Shared/Spinner'
 
-const PrivateRoute = () => {
+const UserRoute = () => {
     const [user, loading, error] = useAuthState(auth)
     const location = useLocation()
     if (loading) {
@@ -18,4 +18,4 @@ const PrivateRoute = () => {
     return <Outlet />
 }
 
-export default PrivateRoute
+export default UserRoute

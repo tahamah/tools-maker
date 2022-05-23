@@ -21,9 +21,9 @@ const Navbar = ({ children }) => {
                     Home
                 </NavLink>
             </li>
-            {admin && (
+            {user && (
                 <li>
-                    <NavLink to="/dashboard/add-service" className="rounded-lg">
+                    <NavLink to="/dashboard/profile" className="rounded-lg">
                         Dashboard
                     </NavLink>
                 </li>
