@@ -51,7 +51,9 @@ const Reviews = () => {
                                         {p?.review}
                                     </p>
                                     <span className="inline-block h-1 w-10 rounded bg-green-500 mt-2 mb-6"></span>
-                                    <p className="text-gray-500">{p.rating} </p>
+                                    <p className="text-gray-500">
+                                        Rating: {p.rating}{' '}
+                                    </p>
 
                                     <h2 className="text-gray-100 font-medium title-font tracking-wider text-sm">
                                         {p?.name}
