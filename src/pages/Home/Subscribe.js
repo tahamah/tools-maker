@@ -6,6 +6,8 @@ const ExploreUse = () => {
         e.preventDefault()
         const email = e.target.email.value
         email && toast.success('Thank you for your Subscription')
+        const inputEmail = window.document.getElementById('input-email')
+        inputEmail.value = ''
     }
     return (
         <>
@@ -49,6 +51,7 @@ const ExploreUse = () => {
                     <form onSubmit={handleSubmit}>
                         <div class="flex flex-col p-1 overflow-hidden border rounded-lg dark:border-gray-600 lg:flex-row dark:focus-within:border-blue-300 focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
                             <input
+                                id="input-email"
                                 required
                                 class="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none dark:bg-gray-800 dark:placeholder-gray-400 focus:placeholder-transparent dark:focus:placeholder-transparent"
                                 type="email"
