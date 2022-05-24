@@ -14,7 +14,7 @@ const ProductWeMake = () => {
 
     const navigate = useNavigate()
     const navigateToUpdate = (id) => {
-        navigate(`update/${id}`)
+        navigate(`purchase/${id}`)
     }
 
     return (
@@ -25,7 +25,7 @@ const ProductWeMake = () => {
                     data-aos="fade-right"
                     data-aos-duration="1000"
                 >
-                    The Product We Make
+                    Tools We Make
                 </h1>
                 <div
                     className="flex justify-center mx-auto mt-6"
@@ -61,20 +61,18 @@ const ProductWeMake = () => {
                                 <h1 className="text-2xl font-bold ">
                                     {p.product_name}
                                 </h1>
-                                <p className="">by {p.supplier_name}</p>
 
                                 <p className="mt-2 text-sm  ">
                                     {p.body.slice(0, 100)}
                                 </p>
-                                <p className="mt-5">
-                                    Available: {p.quantity} {p.unit}
-                                </p>
+                                <p className="mt-5">Available: {p.available}</p>
+                                <p className="mt-5">Min Order: {p.minOrder}</p>
 
                                 <div className="md:flex justify-between mt-3 item-center">
                                     <h1 className="text-lg font-bold md:text-xl">
                                         ${p.price}
                                         <span className="text-sm ml-2 font-normal text-gray-00 ">
-                                            par ( {p.unit} )
+                                            (par piece)
                                         </span>
                                     </h1>
                                     <button
@@ -96,7 +94,7 @@ const ProductWeMake = () => {
                                     lg:mb-0
                                     hover:text-gray-100 "
                                     >
-                                        Update
+                                        Purchase
                                     </button>
                                 </div>
                             </div>
