@@ -2,30 +2,56 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
+import { useQuery } from 'react-query'
 import { toast } from 'react-toastify'
 import fetcher from '../../api'
 import auth from '../../firebase.init'
+import Spinner from '../Shared/Spinner'
 
 const Profile = () => {
     const [imageURL, setImageURL] = useState('')
     const [loading, setLoading] = useState(false)
     const [user] = useAuthState(auth)
     // const [profile, setProfile] = useState({})
-    const { register, handleSubmit, reset } = useForm()
-    const email = user?.email
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm()
+    const userEmail = user?.email
     const onSubmit = async (data) => {
         const profileData = {
             ...data,
             image: imageURL,
-            email: email,
+            email: userEmail,
         }
 
-        await fetcher.put('/profile', profileData)
-        toast.success('Profile Updated Successfully')
+        const { data: result } = await axios.patch(
+            `http://localhost:5000/updateProfile?email=${userEmail}`,
+            profileData
+        )
+        if (result.acknowledged) {
+            toast.success('Profile Updated Successfully')
+        }
+
+        refetch()
         reset()
         setImageURL('')
     }
-    // fetcher(`/profile/${email}`).then((data) => console.log(data?.data))
+    const {
+        data: profile,
+        isLoading,
+        refetch,
+    } = useQuery('user', () => {
+        return fetch(
+            `http://localhost:5000/updateProfile?email=${userEmail}`
+        ).then((res) => res.json())
+    })
+    if (isLoading) {
+        return <Spinner />
+    }
+    const { education, phone, image } = profile
 
     const handleUploadImage = (event) => {
         setLoading(true)
@@ -61,7 +87,7 @@ const Profile = () => {
                             <img
                                 class="object-cover w-44 h-44 border-2 border-blue-500 rounded-full dark:border-blue-400"
                                 alt="Testimonial avatar"
-                                src={user?.photoURL}
+                                src={image || user?.photoURL}
                             />
                         </div>
                         <label
@@ -84,10 +110,10 @@ const Profile = () => {
                             </h2>
                             <h2 class=" text-xl font-semibold text-gray-800 dark:text-white md:mt-0 ">
                                 Education:
-                                <br /> Kustiya Universaty
+                                <br /> {education}
                             </h2>
                             <h2 class=" text-xl font-semibold text-gray-800 dark:text-white md:mt-0 ">
-                                Phone: <br /> 01816417387
+                                Phone: <br /> {phone}
                             </h2>
                         </div>
                     </div>
@@ -105,8 +131,17 @@ const Profile = () => {
                                         type="text"
                                         id="education"
                                         class="input input-bordered"
-                                        {...register('education')}
+                                        {...register('education', {
+                                            required: 'Education is required',
+                                        })}
                                     />
+                                    {errors.education ? (
+                                        <p className="text-xs text-red-300 my-2">
+                                            {errors?.education?.message}
+                                        </p>
+                                    ) : (
+                                        ''
+                                    )}
                                 </div>
                                 <div class="form-control mt-4">
                                     <label class="label">
@@ -117,8 +152,17 @@ const Profile = () => {
                                     <input
                                         type="number"
                                         class="input input-bordered"
-                                        {...register('number')}
+                                        {...register('phone', {
+                                            required: 'Number is Required',
+                                        })}
                                     />
+                                    {errors.phone ? (
+                                        <p className="text-xs text-red-300 my-2">
+                                            {errors?.phone?.message}
+                                        </p>
+                                    ) : (
+                                        ''
+                                    )}
                                 </div>
                                 <div class="form-control">
                                     <input
