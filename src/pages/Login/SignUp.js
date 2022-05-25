@@ -38,8 +38,16 @@ const SignUp = () => {
         return <Spinner />
     }
 
-    if (user || gUser) {
+    if (gUser) {
+        const user = {
+            name: gUser?.user?.displayName,
+            email: gUser?.user?.email,
+            role: '',
+            education: '',
+            phone: '',
+        }
         console.log(user)
+        fetcher.put('/profile', { ...user })
     }
 
     const onSubmit = async (data) => {
@@ -48,12 +56,12 @@ const SignUp = () => {
         const user = {
             name: data?.name,
             email: data?.email,
-            rol: '',
+            role: '',
             education: '',
             phone: '',
         }
         fetcher.post('/profile', { ...user })
-        navigation('/')
+        // navigation('/')
     }
     return (
         <div className="flex md:h-screen justify-center items-center ">

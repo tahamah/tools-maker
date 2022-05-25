@@ -7,6 +7,7 @@ import auth from '../../firebase.init'
 import { useForm } from 'react-hook-form'
 import Spinner from '../Shared/Spinner'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import fetcher from '../../api'
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] =
         useSignInWithGoogle(auth)
@@ -29,6 +30,17 @@ const Login = () => {
     }, [user, gUser, from, navigate])
 
     let singInError
+    if (gUser) {
+        const user = {
+            name: gUser?.user?.displayName,
+            email: gUser?.user?.email,
+            role: '',
+            education: '',
+            phone: '',
+        }
+        console.log(user)
+        fetcher.put('/profile', { ...user })
+    }
 
     if (loading || gLoading) {
         return <Spinner />
