@@ -27,27 +27,27 @@ const Purchase = () => {
         })()
     }, [product_id])
     const handPurchase = async (data) => {
-        console.log(data)
-        const { purchaseQuantity, shippingAddress } = data
         if (
-            parseInt(purchaseQuantity) < parseInt(minOrder) ||
-            parseInt(purchaseQuantity) > parseInt(available)
+            parseInt(data.purchaseQuantity) < parseInt(minOrder) ||
+            parseInt(data.purchaseQuantity) > parseInt(available)
         ) {
             return toast.error('Please Add Valid Quantity')
         }
         const singleOrder = {
-            shippingAddress,
-            purchaseQuantity,
+            ...data,
             price,
             paid: '',
             transactionId: '',
             product_name,
             user: user?.email,
         }
-        if (shippingAddress === '' || purchaseQuantity === '') {
+        if (data.shippingAddress === '' || data.purchaseQuantity === '') {
             return
+        } else {
+            await fetcher.post('/purchaseProduct', singleOrder)
+            toast.success('Product Successfully Added')
+            reset()
         }
-        await fetcher.post('/purchaseProduct', singleOrder)
     }
     return (
         <div class="hero min-h-screen bg-[#03203C]">
@@ -157,7 +157,7 @@ const Purchase = () => {
                                                     'purchaseQuantity',
                                                     {
                                                         required:
-                                                            'Shipping Address is required',
+                                                            'Purchase Quantity is required',
                                                     }
                                                 )}
                                             />
