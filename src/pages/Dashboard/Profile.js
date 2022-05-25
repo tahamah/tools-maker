@@ -12,7 +12,6 @@ const Profile = () => {
     const [imageURL, setImageURL] = useState('')
     const [loading, setLoading] = useState(false)
     const [user] = useAuthState(auth)
-    // const [profile, setProfile] = useState({})
     const {
         register,
         handleSubmit,
@@ -60,7 +59,6 @@ const Profile = () => {
         const formData = new FormData()
 
         formData.set('image', image)
-        console.log(formData)
         axios
             .post(
                 'https://api.imgbb.com/1/upload?key=c7379da5d79fc84d6a03c675e292d978',

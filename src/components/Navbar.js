@@ -8,7 +8,6 @@ import { signOut } from 'firebase/auth'
 
 const Navbar = ({ children }) => {
     const [user] = useAuthState(auth)
-    console.log(user)
     const { pathname } = useLocation()
     const logout = () => {
         signOut(auth)
