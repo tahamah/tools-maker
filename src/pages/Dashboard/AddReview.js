@@ -1,7 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import axios from 'axios'
 import { toast } from 'react-toastify'
 import auth from '../../firebase.init'
 import fetcher from '../../api'

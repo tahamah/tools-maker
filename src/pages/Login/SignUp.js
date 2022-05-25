@@ -8,6 +8,7 @@ import auth from '../../firebase.init'
 import { useForm } from 'react-hook-form'
 import Spinner from '../Shared/Spinner'
 import { Link, useNavigate } from 'react-router-dom'
+import fetcher from '../../api'
 
 const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] =
@@ -44,6 +45,14 @@ const SignUp = () => {
     const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName: data.name })
+        const user = {
+            name: data?.name,
+            email: data?.email,
+            rol: '',
+            education: '',
+            phone: '',
+        }
+        fetcher.post('/profile', { ...user })
         navigation('/')
     }
     return (

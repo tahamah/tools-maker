@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import fetcher from '../../api'
 import auth from '../../firebase.init'
 
@@ -9,7 +10,7 @@ const Profile = () => {
     const [imageURL, setImageURL] = useState('')
     const [loading, setLoading] = useState(false)
     const [user] = useAuthState(auth)
-
+    // const [profile, setProfile] = useState({})
     const { register, handleSubmit, reset } = useForm()
     const email = user?.email
     const onSubmit = async (data) => {
@@ -19,12 +20,12 @@ const Profile = () => {
             email: email,
         }
 
-        await fetcher.post('/profile', profileData)
-        const profile = await fetcher(`/profile/${email}`)
-        console.log(profile)
+        await fetcher.put('/profile', profileData)
+        toast.success('Profile Updated Successfully')
         reset()
         setImageURL('')
     }
+    // fetcher(`/profile/${email}`).then((data) => console.log(data?.data))
 
     const handleUploadImage = (event) => {
         setLoading(true)
@@ -116,7 +117,7 @@ const Profile = () => {
                                     <input
                                         type="number"
                                         class="input input-bordered"
-                                        {...register('serviceCharge')}
+                                        {...register('number')}
                                     />
                                 </div>
                                 <div class="form-control">
