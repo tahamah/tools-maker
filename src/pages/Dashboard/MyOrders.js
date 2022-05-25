@@ -75,7 +75,9 @@ const MyOrders = () => {
                                     <td>
                                         <div>
                                             <button
-                                                // onClick={() => navigate(/payment/${_id})}
+                                                onClick={() =>
+                                                    navigate(`/payment/${_id}`)
+                                                }
                                                 disabled={paid}
                                                 className={`btn btn-xs ${
                                                     paid

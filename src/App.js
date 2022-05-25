@@ -13,6 +13,7 @@ import MyOrders from './pages/Dashboard/MyOrders'
 import PrivateRoute from './authentication/PrivateRoute'
 import NotFound from './pages/Shared/NotFound'
 import AddProduct from './pages/Dashboard/AddProduct'
+import Payment from './pages/Dashboard/Payment'
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                         <Route path="addReview" element={<AddReview />} />
                         <Route path="myOrders" element={<MyOrders />} />
                         <Route path="addProduct" element={<AddProduct />} />
+                        {/* <Route path="payment" element={<Payment />} /> */}
                     </Route>
                 </Route>
                 <Route path="*" element={<NotFound />} />

@@ -5,6 +5,7 @@ import AddReview from '../pages/Dashboard/AddReview'
 import Dashboard from '../pages/Dashboard/Dashboard '
 import Purchase from '../pages/Purchase'
 import AddProduct from '../pages/Dashboard/AddProduct'
+import Payment from '../pages/Dashboard/Payment'
 
 export const privateRoutes = [
     { path: '/about', name: 'About', Component: About },
@@ -13,5 +14,6 @@ export const privateRoutes = [
     { path: '/addProduct', name: 'Add Product', Component: AddProduct },
     { path: '/addReview', name: 'Add Review', Component: AddReview },
     { path: '/dashboard', name: 'Dashboard', Component: Dashboard },
+    { path: '/payment/:id', name: 'Payment', Component: Payment },
     { path: '/purchase/:product_id', name: 'Purchase', Component: Purchase },
 ]
