@@ -12,6 +12,7 @@ import AddReview from './pages/Dashboard/AddReview'
 import MyOrders from './pages/Dashboard/MyOrders'
 import PrivateRoute from './authentication/PrivateRoute'
 import NotFound from './pages/Shared/NotFound'
+import AddProduct from './pages/Dashboard/AddProduct'
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                         <Route path="profile" element={<Profile />} />
                         <Route path="addReview" element={<AddReview />} />
                         <Route path="myOrders" element={<MyOrders />} />
+                        <Route path="addProduct" element={<AddProduct />} />
                     </Route>
                 </Route>
                 <Route path="*" element={<NotFound />} />
