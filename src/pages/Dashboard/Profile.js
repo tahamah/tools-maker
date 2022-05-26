@@ -27,7 +27,7 @@ const Profile = () => {
         }
 
         const { data: result } = await axios.patch(
-            `http://localhost:5000/updateProfile?email=${userEmail}`,
+            `https://morning-ocean-16366.herokuapp.com/updateProfile?email=${userEmail}`,
             profileData
         )
         if (result.acknowledged) {
@@ -44,7 +44,7 @@ const Profile = () => {
         refetch,
     } = useQuery(['user', userEmail], () => {
         return fetch(
-            `http://localhost:5000/getProfile?email=${userEmail}`
+            `https://morning-ocean-16366.herokuapp.com/getProfile?email=${userEmail}`
         ).then((res) => res.json())
     })
     if (isLoading) {

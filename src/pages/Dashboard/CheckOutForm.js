@@ -20,7 +20,7 @@ const CheckoutForm = ({ order }) => {
     const [clientSecret, setclientSecret] = useState('')
 
     useEffect(() => {
-        const url = `http://localhost:5000/create-payment-intent?email=${loggedInUser?.email}`
+        const url = `https://morning-ocean-16366.herokuapp.com/create-payment-intent?email=${loggedInUser?.email}`
         axios
             .post(url, { price: price })
             .then((data) => setclientSecret(data.data.clientSecret))
@@ -53,7 +53,7 @@ const CheckoutForm = ({ order }) => {
             })
         if (!paymentIntent) return
         const { data } = await axios.patch(
-            ` http://localhost:5000/updateSignleOrder?id=${_id}`,
+            ` https://morning-ocean-16366.herokuapp.com/updateSignleOrder?id=${_id}`,
             { transactionId: paymentIntent?.id }
         )
 

@@ -5,13 +5,15 @@ import { toast } from 'react-toastify'
 import fetcher from '../api'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../src/firebase.init'
+import useAdmin from '../hooks/useAdmin'
+import Spinner from './Shared/Spinner'
 
 const Purchase = () => {
     const { product_id } = useParams()
     const [data, setData] = useState([])
     const [pursesCount, setPursesCount] = useState(0)
     const [user] = useAuthState(auth)
-
+    const [isAdmin, isLoading] = useAdmin(user?.email)
     const { img, product_name, available, price, minOrder, body } = data
     const navigate = useNavigate()
     const {
@@ -22,10 +24,22 @@ const Purchase = () => {
     } = useForm()
     useEffect(() => {
         ;(async () => {
-            const res = await fetcher.get(`/tools/${product_id}`)
+            const res = await fetcher.get(
+                `/tools/${product_id}?email=${user?.email}`,
+                {
+                    headers: {
+                        authorization: ` Bearer ${localStorage.getItem(
+                            'accessToken'
+                        )}`,
+                    },
+                }
+            )
             setData(res.data)
         })()
     }, [product_id])
+    if (isLoading) {
+        return <Spinner />
+    }
     const handPurchase = async (data) => {
         if (
             parseInt(data.purchaseQuantity) < parseInt(minOrder) ||
@@ -42,10 +56,20 @@ const Purchase = () => {
             product_name,
             user: user?.email,
         }
+
+        if (isAdmin) {
+            return toast.warning('you are admin, you can not purchase. ')
+        }
         if (data.shippingAddress === '' || data.purchaseQuantity === '') {
             return
         } else {
-            await fetcher.post('/purchaseProduct', singleOrder)
+            await fetcher.post('/purchaseProduct', singleOrder, {
+                headers: {
+                    authorization: ` Bearer ${localStorage.getItem(
+                        'accessToken'
+                    )}`,
+                },
+            })
             toast.success('Product Successfully Added')
             reset()
         }

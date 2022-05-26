@@ -23,11 +23,14 @@ const MyOrders = () => {
         isLoading,
         refetch,
     } = useQuery(['orders', user], () => {
-        return fetch(`http://localhost:5000/UsersOrders?email=${user?.email}`, {
-            //   headers: {
-            //     authorization: Bearer ${localStorage.getItem("accessToken")},
-            //   },
-        }).then((res) => {
+        return fetch(
+            `https://morning-ocean-16366.herokuapp.com/UsersOrders?email=${user?.email}`,
+            {
+                //   headers: {
+                //     authorization: Bearer ${localStorage.getItem("accessToken")},
+                //   },
+            }
+        ).then((res) => {
             if (res.status === 401 || res.status === 403) {
                 signOut(auth)
                 localStorage.removeItem('accessToken')
@@ -41,7 +44,7 @@ const MyOrders = () => {
     }
 
     const handleDeleteOrder = async (id) => {
-        const url = `http://localhost:5000/deleteOneProduct?id=${id}&email=${user?.email}`
+        const url = `https://morning-ocean-16366.herokuapp.com/deleteOneProduct?id=${id}&email=${user?.email}`
         const data = await axios.delete(url, {
             //   headers: {
             //     authorization: Bearer ${localStorage.getItem("accessToken")},
