@@ -42,14 +42,15 @@ const Profile = () => {
         data: profile,
         isLoading,
         refetch,
-    } = useQuery('user', () => {
+    } = useQuery(['user', userEmail], () => {
         return fetch(
-            `http://localhost:5000/updateProfile?email=${userEmail}`
+            `http://localhost:5000/getProfile?email=${userEmail}`
         ).then((res) => res.json())
     })
     if (isLoading) {
         return <Spinner />
     }
+    console.log(profile)
     const { education, phone, image } = profile
 
     const handleUploadImage = (event) => {

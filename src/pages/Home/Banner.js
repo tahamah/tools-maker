@@ -23,7 +23,7 @@ const Banner = () => {
                             <h1 className="text-slate-100 font-bold  text-3xl lg:text-6xl capitalize text-center">
                                 Our Working Place
                             </h1>
-                            <p className="text-slate-300 hidden md:block font-medium text-sm md:text-xl text-center">
+                            <p className="text-slate-100 hidden md:block font-medium text-sm md:text-xl text-center">
                                 You know that working place is very important
                                 for performance.We have a super cool office. The
                                 net and clean Environment makes an employee
@@ -33,7 +33,7 @@ const Banner = () => {
 
                         <img
                             className="max-h-[750px] w-screen "
-                            src="https://i.ibb.co/DbdPy35/banner-2.png"
+                            src="https://i.ibb.co/dJnydt6/1.png"
                             alt=""
                         />
                     </div>

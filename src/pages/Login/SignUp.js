@@ -53,7 +53,6 @@ const SignUp = () => {
         const user = {
             name: gUser?.user?.displayName,
             email: gUser?.user?.email,
-            role: '',
             education: '',
             phone: '',
         }

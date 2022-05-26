@@ -1,3 +1,5 @@
+import { faComment, faMessageSmile } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import AnimatedNumbers from 'react-animated-numbers'
 
@@ -11,9 +13,10 @@ const BusinessSummary = () => {
             >
                 <div className="xl:text-5xl md:text-4xl text-2xl font-semibold leading-tight text-center text-gray-300 sm:mb-0 mb-12">
                     <h1 className="text-4xl font-bold uppercase text-center">
-                        "// They are trusted us! //"
+                        "// BusinessSummary //"
                     </h1>
                     <h2 className="text-xl text-center uppercase ">
+                        They are trusted us! <br />
                         users Experience
                     </h2>
                 </div>
@@ -43,7 +46,7 @@ const BusinessSummary = () => {
                         data-aos="fade-right"
                         data-aos-duration="2000"
                     >
-                        <div className="text-3xl font-semibold text-gray-800">
+                        <div className="text-3xl flex font-semibold text-gray-800">
                             <span className="container">
                                 <AnimatedNumbers
                                     animateToNumber={352}
@@ -68,6 +71,7 @@ const BusinessSummary = () => {
                                     ]}
                                 ></AnimatedNumbers>
                             </span>
+                            <FontAwesomeIcon icon={faComment} />
                         </div>
                         <p className="text-base leading-4 xl:mt-4 mt-2 text-gray-600">
                             Recently Contacted
