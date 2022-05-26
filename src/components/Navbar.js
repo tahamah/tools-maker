@@ -29,20 +29,16 @@ const Navbar = ({ children }) => {
                 </li>
             )}
             <li>
-                <NavLink to="/about" className="rounded-lg">
-                    About
+                <NavLink to="/blog" className="rounded-lg">
+                    Blog
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/services" className="rounded-lg">
-                    Services
+                <NavLink to="/portfolio" className="rounded-lg">
+                    Portfolio
                 </NavLink>
             </li>
-            <li>
-                <NavLink to="/contact" className="rounded-lg">
-                    Contact
-                </NavLink>
-            </li>
+
             <li className=" bg-primary   text-slate-100  duration-200 rounded-full border-2 border-primary font-bold">
                 {user ? (
                     <div>

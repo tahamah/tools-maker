@@ -26,7 +26,7 @@ const AddProduct = () => {
         const { data: imgData } = await axios.post(url, formData)
         const img = imgData.data.url
 
-        const product = { ...rest, image: img }
+        const product = { ...rest, img }
         const { data } = await fetcher.post(`/addProducts`, product)
 
         if (data.acknowledged) {

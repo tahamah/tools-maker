@@ -15,6 +15,7 @@ import NotFound from './pages/Shared/NotFound'
 import AddProduct from './pages/Dashboard/AddProduct'
 import ManageOrder from './pages/Dashboard/ManageOrder'
 import AllUsers from './pages/Dashboard/AllUsers'
+import ManageAllProducts from './pages/Dashboard/ManageAllProducts'
 
 function App() {
     return (
@@ -40,6 +41,10 @@ function App() {
                         <Route path="addProduct" element={<AddProduct />} />
                         <Route path="allOrders" element={<ManageOrder />} />
                         <Route path="allUsers" element={<AllUsers />} />
+                        <Route
+                            path="manageAllProducts"
+                            element={<ManageAllProducts />}
+                        />
                     </Route>
                 </Route>
                 <Route path="*" element={<NotFound />} />
