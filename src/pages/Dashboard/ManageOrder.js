@@ -30,7 +30,6 @@ const ManageOrder = () => {
             return res.json()
         })
     })
-    console.log(orders)
 
     if (isLoading) {
         return <Spinner />
@@ -45,10 +44,11 @@ const ManageOrder = () => {
     const handleDeleteOrder = async (id) => {
         const url = `http://localhost:5000/deleteOneProduct?id=${id}&email=${user?.email}`
         const data = await axios.delete(url, {
-            //   headers: {
-            //     authorization: Bearer ${localStorage.getItem("accessToken")},
-            //   },
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
         })
+
         if (data.status === 401 || data.status === 403) {
             signOut(auth)
             localStorage.removeItem('accessToken')
@@ -136,13 +136,6 @@ const ManageOrder = () => {
                                                 Cancel
                                             </label>
                                             <div>
-                                                {/* <label
-                          htmlFor={`deleteConfirmModal-${index}`}
-                          className="btn modal-button"
-                        >
-                          open modal
-                        </label> */}
-
                                                 <input
                                                     type="checkbox"
                                                     id={`deleteConfirmModal-${index}`}

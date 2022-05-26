@@ -3,12 +3,14 @@ import {
     useSignInWithGoogle,
     useCreateUserWithEmailAndPassword,
     useUpdateProfile,
+    useAuthState,
 } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
 import { useForm } from 'react-hook-form'
 import Spinner from '../Shared/Spinner'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import fetcher from '../../api'
+import useToken from '../../hooks/useToken'
 
 const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] =
@@ -16,7 +18,10 @@ const SignUp = () => {
     const [createUserWithEmailAndPassword, user, loading, error] =
         useCreateUserWithEmailAndPassword(auth)
     const [updateProfile, updating, updateError] = useUpdateProfile(auth)
-    const navigation = useNavigate()
+    const navigate = useNavigate()
+    const [mUser, mLoading] = useAuthState(auth)
+    const [token] = useToken(mUser?.email)
+    const location = useLocation()
     const {
         register,
         formState: { errors },
@@ -34,8 +39,14 @@ const SignUp = () => {
         )
     }
 
-    if (loading || gLoading || updating) {
+    if (loading || gLoading || updating || mLoading) {
         return <Spinner />
+    }
+
+    let from = location.state?.from?.pathname || '/'
+    if (token) {
+        localStorage.setItem('accessToken', token)
+        navigate(from, { replace: true })
     }
 
     if (gUser) {
