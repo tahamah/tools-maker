@@ -21,6 +21,9 @@ const DashboardSidebar = ({ children }) => {
                         <NavLink to="/dashboard/addReview">Add Review</NavLink>
                     </li>
                     <li>
+                        <NavLink to="/dashboard/allOrders">All Orders</NavLink>
+                    </li>
+                    <li>
                         <NavLink to="/dashboard/addProduct">
                             Add Product
                         </NavLink>

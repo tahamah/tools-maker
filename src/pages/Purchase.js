@@ -38,6 +38,7 @@ const Purchase = () => {
             price,
             paid: '',
             transactionId: '',
+            deliveryStatus: '',
             product_name,
             user: user?.email,
         }

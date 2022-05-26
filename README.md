@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Super Stock
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [Super Stock](https://warehouse-f6a32.web.app/)
 
-## Available Scripts
+Live- https://warehouse-f6a32.web.app/
 
-In the project directory, you can run:
+Server- https://agile-journey-07748.herokuapp.com
 
-### `npm start`
+## About The Project:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+It is grocery management website.We stock product from many company and deliver many shop and super shop.The mane thing of the website is Stocking, Deliver and manage. Here is many option as if you want to Add new product, you can. or If you want to delete you can also. But the mane thing is to those you should have an account. and you should log in. Otherwise You can't access those features.Hear is also a simple JWT . Then you Login It will create a JWT token.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Different Features and Functionality
 
-### `npm test`
+-   I use a cute animation in my website It made my web Different from others.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+*   In the top of "Home" section. I use "React Swiper" to make my project uniq.
 
-### `npm run build`
+*   The Text Effects of "Others" rout is uniq from others.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+*   The "Special Deal" section is fully uniq I use react-before-after-slider.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*   I use react toastify to show error messages and success messages.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+*   I use Table in "Manage All" section.
 
-### `npm run eject`
+I think for those reasons my web is Different from others.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## The technology has been used:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1.React js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2.React Tailwind
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3.React Font Awesome of icon.
 
-## Learn More
+4.React Router
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5.Firebase
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6.Axios
 
-### Code Splitting
+7.Mongo DB
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+8.React-firebase-hooks
 
-### Analyzing the Bundle Size
+9.Swiper (to do animation)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+10.React-before-after-slider
