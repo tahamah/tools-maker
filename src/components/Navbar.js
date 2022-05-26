@@ -43,7 +43,7 @@ const Navbar = ({ children }) => {
                     Contact
                 </NavLink>
             </li>
-            <li className="capitalize bg-primary   text-slate-100  duration-200 rounded-full border-2 border-primary font-bold">
+            <li className=" bg-primary   text-slate-100  duration-200 rounded-full border-2 border-primary font-bold">
                 {user ? (
                     <div>
                         <div className="relative">
@@ -65,7 +65,7 @@ const Navbar = ({ children }) => {
                                 <p className="text-xl font-bold text-neutral capitalize">
                                     {user?.displayName}
                                 </p>
-                                <p className="font-semibold text-accent capitalize">
+                                <p className="font-semibold text-accent ">
                                     {user?.email}
                                 </p>
                             </div>

@@ -30,9 +30,10 @@ const Banner = () => {
                                 super fast and productive.
                             </p>
                         </div>
+
                         <img
                             className="max-h-[750px] w-screen "
-                            src="https://i.ibb.co/kKKGSHZ/slider-3.png"
+                            src="https://i.ibb.co/DbdPy35/banner-2.png"
                             alt=""
                         />
                     </div>
@@ -52,7 +53,7 @@ const Banner = () => {
                         </div>
                         <img
                             className="max-h-[750px] w-screen "
-                            src="https://i.ibb.co/CWQLVqQ/slider-1.png"
+                            src="https://i.ibb.co/Cw514F1/banner-3.png"
                             alt=""
                         />
                     </div>
@@ -72,7 +73,7 @@ const Banner = () => {
                         </div>
                         <img
                             className="max-h-[750px] w-screen "
-                            src="https://i.ibb.co/5vwmdSF/slider-2.png"
+                            src="https://i.ibb.co/W07t8T3/banner-4.png"
                             alt=""
                         />
                     </div>
@@ -95,7 +96,7 @@ const Banner = () => {
                         </div>
                         <img
                             className="max-h-[750px] w-screen "
-                            src="https://i.ibb.co/Rpms3VD/slider-4.png"
+                            src="https://i.ibb.co/Q6t0xSV/banner-1.png"
                             alt=""
                         />
                     </div>

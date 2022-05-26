@@ -102,7 +102,7 @@ const ProductWeMake = () => {
                     </div>
                 ))}
             </div>
-            <div
+            {/* <div
                 className="mx-auto  my-20"
                 data-aos="fade-up"
                 data-aos-anchor-placement="bottom-bottom"
@@ -132,7 +132,7 @@ const ProductWeMake = () => {
                 >
                     ManageAll
                 </Link>
-            </div>
+            </div> */}
         </div>
     )
 }
