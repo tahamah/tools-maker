@@ -13,8 +13,8 @@ import MyOrders from './pages/Dashboard/MyOrders'
 import PrivateRoute from './authentication/PrivateRoute'
 import NotFound from './pages/Shared/NotFound'
 import AddProduct from './pages/Dashboard/AddProduct'
-import Payment from './pages/Dashboard/Payment'
 import ManageOrder from './pages/Dashboard/ManageOrder'
+import AllUsers from './pages/Dashboard/AllUsers'
 
 function App() {
     return (
@@ -39,6 +39,7 @@ function App() {
                         <Route path="myOrders" element={<MyOrders />} />
                         <Route path="addProduct" element={<AddProduct />} />
                         <Route path="allOrders" element={<ManageOrder />} />
+                        <Route path="allUsers" element={<AllUsers />} />
                     </Route>
                 </Route>
                 <Route path="*" element={<NotFound />} />

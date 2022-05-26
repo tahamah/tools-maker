@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import useAdmin from '../hooks/useAdmin'
 import { useLocation } from 'react-router-dom'
 import auth from '../firebase.init'
@@ -43,13 +43,13 @@ const Navbar = ({ children }) => {
                     Contact
                 </NavLink>
             </li>
-            <li className="capitalize bg-primary  text-slate-100  duration-200 rounded-lg border-2 border-primary font-bold">
+            <li className="capitalize bg-primary   text-slate-100  duration-200 rounded-full border-2 border-primary font-bold">
                 {user ? (
                     <div>
                         <div className="relative">
                             <div
                                 onClick={() => setOpenInfo(!openInfo)}
-                                className="bg-slate-200 w-[45px] h-[45px] rounded-full p-1 flex justify-center items-center cursor-pointer"
+                                className="bg-slate-200 w-[25px] h-[25px] rounded-full p-1 flex justify-center items-center cursor-pointer"
                             >
                                 <img
                                     src={user?.photoURL}
@@ -82,8 +82,7 @@ const Navbar = ({ children }) => {
                     </div>
                 ) : (
                     <>
-                        <NavLink to="/login">login</NavLink>
-                        <NavLink to="/register">Register</NavLink>
+                        <Link to="/login">login</Link>
                     </>
                 )}
             </li>

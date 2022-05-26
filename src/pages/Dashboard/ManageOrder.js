@@ -69,7 +69,7 @@ const ManageOrder = () => {
                                 product_name,
                                 purchaseQuantity,
                                 price,
-                                email,
+                                user,
                                 paid,
                                 deliveryStatus,
                             } = order
@@ -81,7 +81,7 @@ const ManageOrder = () => {
                                     <td>
                                         {price * parseFloat(purchaseQuantity)}
                                     </td>
-                                    <td>{email}</td>
+                                    <td>{user}</td>
                                     <td>
                                         {paid ? (
                                             <span className="text-green-600">
