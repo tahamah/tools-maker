@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import useAdmin from '../hooks/useAdmin'
 import { useLocation } from 'react-router-dom'
@@ -7,6 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { signOut } from 'firebase/auth'
 
 const Navbar = ({ children }) => {
+    const [openInfo, setOpenInfo] = useState(false)
     const [user] = useAuthState(auth)
     const { pathname } = useLocation()
     const logout = () => {
@@ -42,15 +43,48 @@ const Navbar = ({ children }) => {
                     Contact
                 </NavLink>
             </li>
-            <li>
+            <li className="capitalize bg-primary  text-slate-100  duration-200 rounded-lg border-2 border-primary font-bold">
                 {user ? (
-                    <button className="rounded-lg" onClick={logout}>
-                        Logout
-                    </button>
+                    <div>
+                        <div className="relative">
+                            <div
+                                onClick={() => setOpenInfo(!openInfo)}
+                                className="bg-slate-200 w-[45px] h-[45px] rounded-full p-1 flex justify-center items-center cursor-pointer"
+                            >
+                                <img
+                                    src={user?.photoURL}
+                                    alt=""
+                                    className="rounded-full"
+                                />
+                            </div>
+                            <div
+                                className={`${
+                                    openInfo ? 'flex' : 'hidden'
+                                } absolute flex-col justify-center items-center gap-5 p-6 rounded-lg bg-base-100 shadow-lg top-16 -left-14 md:-left-16`}
+                            >
+                                <p className="text-xl font-bold text-neutral capitalize">
+                                    {user?.displayName}
+                                </p>
+                                <p className="font-semibold text-accent capitalize">
+                                    {user?.email}
+                                </p>
+                            </div>
+                        </div>
+                        <p
+                            className="capitalize  w-full ml-3"
+                            onClick={() => {
+                                signOut(auth)
+                                localStorage.removeItem('accessToken')
+                            }}
+                        >
+                            sign out
+                        </p>
+                    </div>
                 ) : (
-                    <NavLink to="/login" className="rounded-lg">
-                        Login
-                    </NavLink>
+                    <>
+                        <NavLink to="/login">login</NavLink>
+                        <NavLink to="/register">Register</NavLink>
+                    </>
                 )}
             </li>
         </>
