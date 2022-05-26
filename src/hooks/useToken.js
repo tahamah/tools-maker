@@ -4,16 +4,13 @@ const useToken = (email) => {
 
     useEffect(() => {
         const getToken = async () => {
-            const res = await fetch(
-                'https://morning-ocean-16366.herokuapp.com/getToken',
-                {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                    body: JSON.stringify({ email }),
-                }
-            )
+            const res = await fetch('http://localhost:5000/getToken', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            })
             const data = await res.json()
             setToken(data.accessToken)
         }

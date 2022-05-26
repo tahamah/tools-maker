@@ -14,9 +14,7 @@ const ManageAllProducts = () => {
         isLoading,
         refetch,
     } = useQuery(['products'], () => {
-        return fetch('https://morning-ocean-16366.herokuapp.com/allTools').then(
-            (res) => res.json()
-        )
+        return fetch('http://localhost:5000/allTools').then((res) => res.json())
     })
 
     if (isLoading) {
@@ -24,7 +22,7 @@ const ManageAllProducts = () => {
     }
 
     const handleDeleteProduct = async (id) => {
-        const url = `https://morning-ocean-16366.herokuapp.com/deleteOneProduct?id=${id}&email=${user?.email}`
+        const url = `http://localhost:5000/deleteOneProduct?id=${id}&email=${user?.email}`
         const data = await axios.delete(url, {
             headers: {
                 authorization: ` Bearer ${localStorage.getItem('accessToken')}`,

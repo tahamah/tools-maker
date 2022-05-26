@@ -27,8 +27,15 @@ const Profile = () => {
         }
 
         const { data: result } = await axios.patch(
-            `https://morning-ocean-16366.herokuapp.com/updateProfile?email=${userEmail}`,
-            profileData
+            `http://localhost:5000/updateProfile?email=${userEmail}`,
+            profileData,
+            {
+                headers: {
+                    authorization: ` Bearer ${localStorage.getItem(
+                        'accessToken'
+                    )}`,
+                },
+            }
         )
         if (result.acknowledged) {
             toast.success('Profile Updated Successfully')
@@ -43,9 +50,11 @@ const Profile = () => {
         isLoading,
         refetch,
     } = useQuery(['user', userEmail], () => {
-        return fetch(
-            `https://morning-ocean-16366.herokuapp.com/getProfile?email=${userEmail}`
-        ).then((res) => res.json())
+        return fetch(`http://localhost:5000/getProfile?email=${userEmail}`, {
+            headers: {
+                authorization: ` Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        }).then((res) => res.json())
     })
     if (isLoading) {
         return <Spinner />

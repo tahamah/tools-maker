@@ -11,26 +11,16 @@ import Spinner from '../Shared/Spinner'
 const MyOrders = () => {
     const [user] = useAuthState(auth)
     const navigate = useNavigate()
-    // const [orders, setOrders] = useState([])
-    // useEffect(() => {
-    //     fetcher(`/purchaseProduct?user=${user?.email}`).then((data) => {
-    //         setOrders(data.data)
-    //     })
-    // }, [user?.email])
-
     const {
         data: orders,
         isLoading,
         refetch,
     } = useQuery(['orders', user], () => {
-        return fetch(
-            `https://morning-ocean-16366.herokuapp.com/UsersOrders?email=${user?.email}`,
-            {
-                //   headers: {
-                //     authorization: Bearer ${localStorage.getItem("accessToken")},
-                //   },
-            }
-        ).then((res) => {
+        return fetch(`http://localhost:5000/UsersOrders?email=${user?.email}`, {
+            headers: {
+                authorization: ` Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        }).then((res) => {
             if (res.status === 401 || res.status === 403) {
                 signOut(auth)
                 localStorage.removeItem('accessToken')
@@ -44,11 +34,11 @@ const MyOrders = () => {
     }
 
     const handleDeleteOrder = async (id) => {
-        const url = `https://morning-ocean-16366.herokuapp.com/deleteOneProduct?id=${id}&email=${user?.email}`
+        const url = `http://localhost:5000/deleteOneOrder?id=${id}&email=${user?.email}`
         const data = await axios.delete(url, {
-            //   headers: {
-            //     authorization: Bearer ${localStorage.getItem("accessToken")},
-            //   },
+            headers: {
+                authorization: ` Bearer ${localStorage.getItem('accessToken')}`,
+            },
         })
         if (data.status === 401 || data.status === 403) {
             signOut(auth)
@@ -61,7 +51,7 @@ const MyOrders = () => {
     return (
         <>
             <h2 className="text-3xl md:text-5xl font-bold text-neutral text-center my-10 capitalize">
-                My all order
+                My Orders
             </h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">

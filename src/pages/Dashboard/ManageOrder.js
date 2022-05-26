@@ -3,6 +3,7 @@ import { signOut } from 'firebase/auth'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useQuery } from 'react-query'
+import { toast } from 'react-toastify'
 import auth from '../../firebase.init'
 import Spinner from '../Shared/Spinner'
 
@@ -19,7 +20,7 @@ const ManageOrder = () => {
         refetch,
     } = useQuery('orders', () => {
         return fetch(
-            `https://morning-ocean-16366.herokuapp.com/allOrders?email=${user?.email}`,
+            `http://localhost:5000/allOrders?email=${user?.email}`,
             {}
         ).then((res) => {
             if (res.status === 401 || res.status === 403) {
@@ -36,7 +37,7 @@ const ManageOrder = () => {
     }
 
     const handleShipping = async (id) => {
-        const url = `https://morning-ocean-16366.herokuapp.com/updateDeliveryStatus?email=${user?.email}`
+        const url = `http://localhost:5000/updateDeliveryStatus?email=${user?.email}`
         const data = await axios.patch(
             url,
             { id },
@@ -48,11 +49,14 @@ const ManageOrder = () => {
                 },
             }
         )
-        console.log(data)
         refetch()
+
+        if (data?.data?.acknowledged) {
+            toast.success('Successfully Shipped')
+        }
     }
     const handleDeleteOrder = async (id) => {
-        const url = `https://morning-ocean-16366.herokuapp.com/deleteOneProduct?id=${id}&email=${user?.email}`
+        const url = `http://localhost:5000/deleteOneOrder?id=${id}&email=${user?.email}`
         const data = await axios.delete(url, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -65,6 +69,9 @@ const ManageOrder = () => {
             return
         }
         refetch()
+        if (data?.data?.acknowledged) {
+            toast.warning('Order has been Cancel')
+        }
     }
 
     return (

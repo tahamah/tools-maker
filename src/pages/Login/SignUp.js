@@ -56,8 +56,17 @@ const SignUp = () => {
             education: '',
             phone: '',
         }
-        console.log(user)
-        fetcher.put('/profile', { ...user })
+        fetcher.put(
+            '/profile',
+            { ...user },
+            {
+                headers: {
+                    authorization: ` Bearer ${localStorage.getItem(
+                        'accessToken'
+                    )}`,
+                },
+            }
+        )
     }
 
     const onSubmit = async (data) => {

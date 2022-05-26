@@ -12,9 +12,11 @@ const AllUsers = () => {
     const [user] = useAuthState(auth)
 
     const { data, isLoading, refetch } = useQuery(['allUsers', user], () => {
-        fetch(
-            `https://morning-ocean-16366.herokuapp.com/profile?email=${user?.email}`
-        )
+        fetch(`http://localhost:5000/profile?email=${user?.email}`, {
+            headers: {
+                authorization: ` Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
             .then((res) => {
                 if (res.status === 401 || res.status === 403) {
                     signOut(auth)
@@ -25,15 +27,24 @@ const AllUsers = () => {
             })
             .then((data) => setAllUsers(data))
     })
-    console.log(allUsers)
 
     if (isLoading) {
         return <Spinner />
     }
 
     const handleMakeAdmin = async (id) => {
-        const url = `https://morning-ocean-16366.herokuapp.com/makeAdmin?email=${user?.email}`
-        const data = await axios.patch(url, { id })
+        const url = `http://localhost:5000/makeAdmin?email=${user?.email}`
+        const data = await axios.patch(
+            url,
+            { id },
+            {
+                headers: {
+                    authorization: ` Bearer ${localStorage.getItem(
+                        'accessToken'
+                    )}`,
+                },
+            }
+        )
         if (data.status === 401 || data.status === 403) {
             signOut(auth)
             localStorage.removeItem('accessToken')
@@ -46,8 +57,12 @@ const AllUsers = () => {
     }
 
     const handleDeleteUser = async (id) => {
-        const url = `https://morning-ocean-16366.herokuapp.com/deleteOneUser?email=${user?.email}&id=${id}`
-        const data = await axios.delete(url, {})
+        const url = `http://localhost:5000/deleteOneUser?email=${user?.email}&id=${id}`
+        const data = await axios.delete(url, {
+            headers: {
+                authorization: ` Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
         if (data.status === 401 || data.status === 403) {
             signOut(auth)
             localStorage.removeItem('accessToken')
@@ -123,15 +138,53 @@ const AllUsers = () => {
                                                 ? 'Already Admin'
                                                 : 'Make admin'}
                                         </button>
-                                        <button
-                                            onClick={() =>
-                                                handleDeleteUser(_id)
-                                            }
+
+                                        <label
+                                            htmlFor={`deleteUser-${index}`}
                                             className="btn btn-xs bg-red-600 border-red-600
-                        font-semibold px-2 text-white capitalize rounded-lg"
+                                            font-semibold px-2 text-white capitalize rounded-lg"
                                         >
-                                            remove user
-                                        </button>
+                                            Remove User
+                                        </label>
+                                        <div>
+                                            <input
+                                                type="checkbox"
+                                                id={`deleteUser-${index}`}
+                                                className="modal-toggle"
+                                            />
+                                            <div className="modal modal-bottom sm:modal-middle">
+                                                <div className="modal-box">
+                                                    <label
+                                                        htmlFor={`deleteUser-${index}`}
+                                                        className="btn btn-sm btn-circle absolute right-2 top-2"
+                                                    >
+                                                        ✕
+                                                    </label>
+                                                    <h3 className="font-bold text-lg mt-8">
+                                                        You are trying to delete{' '}
+                                                        {/* {product_name} */}
+                                                    </h3>
+                                                    <p className="py-4">
+                                                        Are you sure you want to
+                                                        delete?
+                                                    </p>
+                                                    <div className="modal-action">
+                                                        <label
+                                                            onClick={() =>
+                                                                handleDeleteUser(
+                                                                    _id
+                                                                )
+                                                            }
+                                                            htmlFor={`deleteUser-${index}`}
+                                                            className="btn bg-red-600 border-red-600
+                                     font-semibold px-2 text-white capitalize rounded-lg"
+                                                        >
+                                                            Confirm Delete
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>

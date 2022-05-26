@@ -16,7 +16,6 @@ const AddProduct = () => {
     } = useForm()
 
     const handleAddProduct = async (inputData) => {
-        console.log(inputData)
         const { productImg, ...rest } = inputData
         const uploadedImg = productImg[0]
         const formData = new FormData()
@@ -27,7 +26,17 @@ const AddProduct = () => {
         const img = imgData.data.url
 
         const product = { ...rest, img }
-        const { data } = await fetcher.post(`/addProducts`, product)
+        const { data } = await fetcher.post(
+            `/addProducts?email=${user?.email}`,
+            product,
+            {
+                headers: {
+                    authorization: ` Bearer ${localStorage.getItem(
+                        'accessToken'
+                    )}`,
+                },
+            }
+        )
 
         if (data.acknowledged) {
             toast.success('Product has been uploaded')

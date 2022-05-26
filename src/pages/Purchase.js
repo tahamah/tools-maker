@@ -36,7 +36,7 @@ const Purchase = () => {
             )
             setData(res.data)
         })()
-    }, [product_id])
+    }, [product_id, user])
     if (isLoading) {
         return <Spinner />
     }
@@ -63,13 +63,17 @@ const Purchase = () => {
         if (data.shippingAddress === '' || data.purchaseQuantity === '') {
             return
         } else {
-            await fetcher.post('/purchaseProduct', singleOrder, {
-                headers: {
-                    authorization: ` Bearer ${localStorage.getItem(
-                        'accessToken'
-                    )}`,
-                },
-            })
+            await fetcher.post(
+                `/purchaseProduct?email=${user?.email}`,
+                singleOrder,
+                {
+                    headers: {
+                        authorization: ` Bearer ${localStorage.getItem(
+                            'accessToken'
+                        )}`,
+                    },
+                }
+            )
             toast.success('Product Successfully Added')
             reset()
         }

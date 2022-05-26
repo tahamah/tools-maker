@@ -41,7 +41,17 @@ const Login = () => {
             education: '',
             phone: '',
         }
-        fetcher.put('/profile', { ...user })
+        fetcher.put(
+            '/profile',
+            { ...user },
+            {
+                headers: {
+                    authorization: ` Bearer ${localStorage.getItem(
+                        'accessToken'
+                    )}`,
+                },
+            }
+        )
     }
 
     if (loading || gLoading || mLoading) {

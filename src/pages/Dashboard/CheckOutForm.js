@@ -11,7 +11,6 @@ import auth from '../../firebase.init'
 const CheckoutForm = ({ order }) => {
     const { price, user, email, _id } = order
     const [loggedInUser] = useAuthState(auth)
-
     const stripe = useStripe()
     const elements = useElements()
     const navigate = useNavigate()
@@ -20,7 +19,7 @@ const CheckoutForm = ({ order }) => {
     const [clientSecret, setclientSecret] = useState('')
 
     useEffect(() => {
-        const url = `https://morning-ocean-16366.herokuapp.com/create-payment-intent?email=${loggedInUser?.email}`
+        const url = `http://localhost:5000/create-payment-intent?email=${loggedInUser?.email}`
         axios
             .post(url, { price: price })
             .then((data) => setclientSecret(data.data.clientSecret))
@@ -53,8 +52,15 @@ const CheckoutForm = ({ order }) => {
             })
         if (!paymentIntent) return
         const { data } = await axios.patch(
-            ` https://morning-ocean-16366.herokuapp.com/updateSignleOrder?id=${_id}`,
-            { transactionId: paymentIntent?.id }
+            ` http://localhost:5000/updateSignleOrder?id=${_id}&email=${loggedInUser?.email}`,
+            { transactionId: paymentIntent?.id },
+            {
+                headers: {
+                    authorization: ` Bearer ${localStorage.getItem(
+                        'accessToken'
+                    )}`,
+                },
+            }
         )
 
         toast.success('Payment Successfully')
