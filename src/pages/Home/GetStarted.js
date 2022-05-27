@@ -16,13 +16,13 @@ const GetStarted = () => {
                     <h1 class="text-3xl font-extrabold sm:text-5xl">
                         Let us find your
                         <strong class="font-extrabold text-rose-700 sm:block">
-                            Forever Home.
+                            Favorite Tools.
                         </strong>
                     </h1>
 
                     <p class="max-w-lg mt-4 sm:leading-relaxed sm:text-xl">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Nesciunt illo tenetur fuga ducimus numquam ea!
+                        We are ready to make your Favorite Tools. Please male
+                        use what you want.
                     </p>
 
                     <div class="flex flex-wrap gap-4 mt-8 text-center">

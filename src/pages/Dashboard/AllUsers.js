@@ -12,11 +12,16 @@ const AllUsers = () => {
     const [user] = useAuthState(auth)
 
     const { data, isLoading, refetch } = useQuery(['allUsers', user], () => {
-        fetch(`http://localhost:5000/profile?email=${user?.email}`, {
-            headers: {
-                authorization: ` Bearer ${localStorage.getItem('accessToken')}`,
-            },
-        })
+        fetch(
+            `https://morning-ocean-16366.herokuapp.com/profile?email=${user?.email}`,
+            {
+                headers: {
+                    authorization: ` Bearer ${localStorage.getItem(
+                        'accessToken'
+                    )}`,
+                },
+            }
+        )
             .then((res) => {
                 if (res.status === 401 || res.status === 403) {
                     signOut(auth)
@@ -33,7 +38,7 @@ const AllUsers = () => {
     }
 
     const handleMakeAdmin = async (id) => {
-        const url = `http://localhost:5000/makeAdmin?email=${user?.email}`
+        const url = `https://morning-ocean-16366.herokuapp.com/makeAdmin?email=${user?.email}`
         const data = await axios.patch(
             url,
             { id },
@@ -57,7 +62,7 @@ const AllUsers = () => {
     }
 
     const handleDeleteUser = async (id) => {
-        const url = `http://localhost:5000/deleteOneUser?email=${user?.email}&id=${id}`
+        const url = `https://morning-ocean-16366.herokuapp.com/deleteOneUser?email=${user?.email}&id=${id}`
         const data = await axios.delete(url, {
             headers: {
                 authorization: ` Bearer ${localStorage.getItem('accessToken')}`,

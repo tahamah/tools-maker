@@ -1,3 +1,5 @@
+import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
 const Footer = () => {
@@ -10,13 +12,12 @@ const Footer = () => {
                             href="https://flowbite.com"
                             class="flex items-center"
                         >
-                            <img
-                                src="/docs/images/logo.svg"
-                                class="mr-3 h-8"
-                                alt="FlowBite Logo"
+                            <FontAwesomeIcon
+                                className=" text-white text-2xl mr-4"
+                                icon={faScrewdriverWrench}
                             />
                             <span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-200">
-                                Flowbite
+                                Tools Maker
                             </span>
                         </a>
                     </div>
@@ -31,7 +32,7 @@ const Footer = () => {
                                         href="https://flowbite.com"
                                         class="hover:underline"
                                     >
-                                        Flowbite
+                                        Tools Maker
                                     </a>
                                 </li>
                                 <li>
@@ -91,7 +92,7 @@ const Footer = () => {
                     <span class="text-sm text-gray-200 sm:text-center ">
                         © 2022{' '}
                         <a href="https://flowbite.com" class="hover:underline">
-                            Flowbite™
+                            Tools Maker™
                         </a>
                         . All Rights Reserved.
                     </span>

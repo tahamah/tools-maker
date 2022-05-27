@@ -27,7 +27,7 @@ const Profile = () => {
         }
 
         const { data: result } = await axios.patch(
-            `http://localhost:5000/updateProfile?email=${userEmail}`,
+            `https://morning-ocean-16366.herokuapp.com/updateProfile?email=${userEmail}`,
             profileData,
             {
                 headers: {
@@ -50,11 +50,16 @@ const Profile = () => {
         isLoading,
         refetch,
     } = useQuery(['user', userEmail], () => {
-        return fetch(`http://localhost:5000/getProfile?email=${userEmail}`, {
-            headers: {
-                authorization: ` Bearer ${localStorage.getItem('accessToken')}`,
-            },
-        }).then((res) => res.json())
+        return fetch(
+            `https://morning-ocean-16366.herokuapp.com/getProfile?email=${userEmail}`,
+            {
+                headers: {
+                    authorization: ` Bearer ${localStorage.getItem(
+                        'accessToken'
+                    )}`,
+                },
+            }
+        ).then((res) => res.json())
     })
     if (isLoading) {
         return <Spinner />

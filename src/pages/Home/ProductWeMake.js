@@ -102,37 +102,6 @@ const ProductWeMake = () => {
                     </div>
                 ))}
             </div>
-            {/* <div
-                className="mx-auto  my-20"
-                data-aos="fade-up"
-                data-aos-anchor-placement="bottom-bottom"
-                data-aos-duration="2000"
-            >
-                <Link
-                    to="/manageAll"
-                    className="
-                    inline-flex
-                    items-center
-                    mt-4
-                    px-5
-                    py-2
-                    outline 
-                    ease-in-out
-                    duration-500
-                    outline-gray-100
-                    hover:bg-gray-100
-                    hover:outline-yellow-500
-                    hover:text-gray-900
-                    hover:-translate-y-3
-                    bg-gray-900
-                    text-white
-                    font-bold
-                    lg:mb-0
-                    "
-                >
-                    ManageAll
-                </Link>
-            </div> */}
         </div>
     )
 }

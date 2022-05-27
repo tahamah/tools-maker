@@ -290,11 +290,13 @@ const Purchase = () => {
                                         data-aos="fade-right"
                                         data-aos-duration="1000"
                                     >
-                                        <button className="bg-yellow-500 text-white py-1 px-5 hover:translate-x-3 duration-500  rounded-full mt-5">
-                                            <Link to="/dashboard/myOrders">
-                                                My Orders
-                                            </Link>
-                                        </button>
+                                        {!isAdmin && (
+                                            <button className="bg-yellow-500 text-white py-1 px-5 hover:translate-x-3 duration-500  rounded-full mt-5">
+                                                <Link to="/dashboard/myOrders">
+                                                    My Orders
+                                                </Link>
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             </div>

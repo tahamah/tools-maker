@@ -20,7 +20,7 @@ const ManageOrder = () => {
         refetch,
     } = useQuery('orders', () => {
         return fetch(
-            `http://localhost:5000/allOrders?email=${user?.email}`,
+            `https://morning-ocean-16366.herokuapp.com/allOrders?email=${user?.email}`,
             {}
         ).then((res) => {
             if (res.status === 401 || res.status === 403) {
@@ -37,7 +37,7 @@ const ManageOrder = () => {
     }
 
     const handleShipping = async (id) => {
-        const url = `http://localhost:5000/updateDeliveryStatus?email=${user?.email}`
+        const url = `https://morning-ocean-16366.herokuapp.com/updateDeliveryStatus?email=${user?.email}`
         const data = await axios.patch(
             url,
             { id },
@@ -56,7 +56,7 @@ const ManageOrder = () => {
         }
     }
     const handleDeleteOrder = async (id) => {
-        const url = `http://localhost:5000/deleteOneOrder?id=${id}&email=${user?.email}`
+        const url = `https://morning-ocean-16366.herokuapp.com/deleteOneOrder?id=${id}&email=${user?.email}`
         const data = await axios.delete(url, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

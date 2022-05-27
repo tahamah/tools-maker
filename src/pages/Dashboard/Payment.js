@@ -17,7 +17,7 @@ const Payment = () => {
 
     const { id } = useParams()
 
-    const url = `http://localhost:5000/singleOrder?id=${id}&email=${user?.email}`
+    const url = `https://morning-ocean-16366.herokuapp.com/singleOrder?id=${id}&email=${user?.email}`
     const { data: order, isLoading } = useQuery(['product', url], () => {
         return fetch(url, {
             headers: {

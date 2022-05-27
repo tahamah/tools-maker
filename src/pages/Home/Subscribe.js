@@ -33,16 +33,17 @@ const ExploreUse = () => {
                 <div class="md:flex md:items-center md:justify-center md:w-1/2 md:bg-gray-700 md:dark:bg-gray-800">
                     <div class="px-6 py-6 md:px-8 md:py-0">
                         <h2 class="text-lg font-bold text-gray-700 dark:text-white md:text-gray-100">
-                            Sign Up For{' '}
+                            Subscribe to Get{' '}
                             <span class="text-blue-600 dark:text-blue-400 md:text-blue-300">
-                                Project
+                                Special
                             </span>{' '}
-                            Updates
+                            Offer
                         </h2>
 
                         <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 md:text-gray-400">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Consectetur obcaecati odio
+                            You should Subscribe us. To get special offer
+                            Subscribe by email. We will send special offer for
+                            you.
                         </p>
                     </div>
                 </div>

@@ -40,7 +40,7 @@ const Blogs = () => {
                             <img
                                 alt=""
                                 className="  object-cover object-center  rounded"
-                                src="https://i.ibb.co/85jM3PR/blog-3.png"
+                                src=" https://i.ibb.co/FX8xs1H/1-1.png"
                             />
                         </div>
                         <div className="lg:w-2/3 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -49,29 +49,25 @@ const Blogs = () => {
                                 data-aos="fade-left"
                                 data-aos-duration="2000"
                             >
-                                WHAT IS the Difference between javascript and
-                                nodejs ?
+                                How will you improve the performance of a React
+                                Application?
                             </h1>
                             <div
                                 className=" text-gray-400"
                                 data-aos="fade-up"
                                 data-aos-duration="2000"
                             >
+                                <p>01.Lazy loading images in React.</p>
                                 <p>
-                                    Javascript: Javascript is a programming
-                                    language that is used for writing scripts on
-                                    the website. It can only be run in the
-                                    browsers. It is basically used on the
-                                    client-side.Javascript is used in frontend
-                                    development.
+                                    02.Keeping component state local where
+                                    necessary
                                 </p>
-                                <br />
                                 <p>
-                                    NodeJS: NodeJS is a Javascript runtime
-                                    environment. We can run Javascript outside
-                                    the browser with the help of NodeJS. It is
-                                    mostly used on the server-side. Nodejs is
-                                    used in server-side development.
+                                    03.Windowing or list virtualization in React
+                                </p>
+                                <p>
+                                    04.Keeping component state local where
+                                    necessary
                                 </p>
                             </div>
                             <p
@@ -79,7 +75,6 @@ const Blogs = () => {
                                 data-aos="fade-up"
                                 data-aos-duration="2000"
                             >
-                                {' '}
                                 See More...
                             </p>
                         </div>
@@ -97,7 +92,7 @@ const Blogs = () => {
                             <img
                                 alt=""
                                 className="  object-cover object-center  rounded"
-                                src="https://i.ibb.co/bmdLCFb/blog-4.png"
+                                src="https://i.ibb.co/XD9rfNL/2-1.png"
                             />
                         </div>
                         <div className="lg:w-2/3 w-full lg:pr-10 lg:py-6 mt-6 lg:mt-0 ">
@@ -106,8 +101,8 @@ const Blogs = () => {
                                 data-aos="fade-right"
                                 data-aos-duration="2000"
                             >
-                                When should you use nodejs and when should you
-                                use mongodb ?
+                                What are the different ways to manage a state in
+                                a React application?
                             </h1>
                             <div
                                 className=" text-gray-400"
@@ -115,19 +110,22 @@ const Blogs = () => {
                                 data-aos-duration="2000"
                             >
                                 <p>
-                                    I think Node.js is especially suited for
-                                    applications where we'd like to maintain a
-                                    persistent connection from the browser back
-                                    to the server.
+                                    Local (UI) state – Local state is data we
+                                    manage in one or another component.
                                 </p>
-                                <br />
+
                                 <p>
-                                    MongoDB facilitates storing database in JSON
-                                    (javascript object notation) (or simply when
-                                    data is in form of key-value pair) this is
-                                    very fast and efficient so we should use it
-                                    when we have key-value pair to store(JSON
-                                    data).
+                                    Global (UI) state – Global state is data we
+                                    manage across multiple components.
+                                </p>
+                                <p>
+                                    Server state – Data that comes from an
+                                    external server that must be integrated with
+                                    our UI state.
+                                </p>
+                                <p>
+                                    URL state – Data that exists on our URLs,
+                                    including the pathname and query parameters.
                                 </p>
                             </div>
                             <p
@@ -153,7 +151,7 @@ const Blogs = () => {
                             <img
                                 alt=""
                                 className="  object-cover object-center  rounded"
-                                src="https://i.ibb.co/Cz5WHRP/blog-1.png"
+                                src="https://i.ibb.co/P9svHzd/3-1.png"
                             />
                         </div>
                         <div className="lg:w-2/3 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -162,8 +160,7 @@ const Blogs = () => {
                                 data-aos="fade-left"
                                 data-aos-duration="2000"
                             >
-                                WHAT IS the Differences between SQL and NoSQL
-                                databases ?
+                                How does prototypical inheritance work?
                             </h1>
                             <div
                                 className=" text-gray-400"
@@ -171,19 +168,16 @@ const Blogs = () => {
                                 data-aos-duration="2000"
                             >
                                 <p>
-                                    SQL: SQL databases have fixed or static or
-                                    predefined schema and These databases are
-                                    not suited for hierarchical data storage.
-                                    They are Vertically Scalable.These databases
-                                    are best suited for complex queries.
-                                </p>
-                                <br />
-                                <p>
-                                    NoSQL: NonSQL databases have dynamic schema.
-                                    and These databases are best suited for
-                                    hierarchical data storage.they are
-                                    Horizontally scalable. These databases are
-                                    not so good for complex queries.
+                                    Every object with its methods and properties
+                                    contains an internal and hidden property
+                                    known as [[Prototype]]. The Prototypal
+                                    Inheritance is a feature in javascript used
+                                    to add methods and properties in objects. It
+                                    is a method by which an object can inherit
+                                    the properties and methods of another
+                                    object. Traditionally, in order to get and
+                                    set the [[Prototype]] of an object, we use
+                                    Object.getPrototypeOf and Object.
                                 </p>
                             </div>
                             <p
@@ -209,7 +203,7 @@ const Blogs = () => {
                             <img
                                 alt=""
                                 className="  object-cover object-center  rounded"
-                                src="https://i.ibb.co/WPjL4Tt/blog-2.png"
+                                src="https://i.ibb.co/D1KGT00/4-1.png"
                             />
                         </div>
                         <div className="lg:w-2/3 w-full lg:pr-10 lg:py-6 mt-6 lg:mt-0">
@@ -218,27 +212,77 @@ const Blogs = () => {
                                 data-aos="fade-right"
                                 data-aos-duration="2000"
                             >
-                                What is the purpose of jwt and how does it work
-                                ?
+                                Why you do not set the state directly in React.
+                                For example, if you have const [products,
+                                setProducts] = useState([]). Why you do not set
+                                products = [...] instead, you use the
+                                setProducts
                             </h1>
                             <p
                                 className=" text-gray-400"
                                 data-aos="fade-up"
                                 data-aos-duration="2000"
                             >
-                                JSON Web Token (JWT) is an open standard (RFC
-                                7519) that defines a compact and self-contained
-                                way for securely transmitting information
-                                between parties as a JSON object. This
-                                information can be verified and trusted because
-                                it is digitally signed. <br /> <br />
-                                In authentication, when the user successfully
-                                logs in using their credentials, a JSON Web
-                                Token will be returned. Since tokens are
-                                credentials, great care must be taken to prevent
-                                security issues. In general, you should not keep
-                                tokens longer than required.
+                                State is a variable that stored data. Sometimes
+                                we need to change the state based on different
+                                situation. Thats why we use 'const [products,
+                                setProducts] = useState([])'. If we set our
+                                state like products = [...] we will unable to
+                                change the value of products if we need. For
+                                this reason we use 'const [products,
+                                setProducts] = useState([])'.
                             </p>
+                            <p
+                                className="font-bold text-gray-300"
+                                data-aos="fade-up"
+                                data-aos-duration="2000"
+                            >
+                                {' '}
+                                See More...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="text-gray-600  body-font overflow-hidden">
+                <div className="container px-5 py-24 mx-auto">
+                    <div className="lg:w-4/5 mx-auto md:flex justify-center items-center">
+                        <div
+                            className="lg:w-1/3"
+                            data-aos="fade-right"
+                            data-aos-duration="2000"
+                        >
+                            <img
+                                alt=""
+                                className="  object-cover object-center  rounded"
+                                src="https://i.ibb.co/8KSZRTb/5.png"
+                            />
+                        </div>
+                        <div className="lg:w-2/3 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                            <h1
+                                className="text-gray-300 text-3xl title-font font-medium mb-4"
+                                data-aos="fade-left"
+                                data-aos-duration="2000"
+                            >
+                                What is a unit test? Why should write unit
+                                tests?
+                            </h1>
+                            <div
+                                className=" text-gray-400"
+                                data-aos="fade-up"
+                                data-aos-duration="2000"
+                            >
+                                <p>
+                                    Unit tests are typically automated tests
+                                    written and run by software developers to
+                                    ensure that a section of an application
+                                    (known as the "unit") meets its design and
+                                    behaves as intended. In procedural
+                                    programming, a unit could be an entire
+                                    module, but it is more commonly an
+                                    individual function or procedure.
+                                </p>
+                            </div>
                             <p
                                 className="font-bold text-gray-300"
                                 data-aos="fade-up"

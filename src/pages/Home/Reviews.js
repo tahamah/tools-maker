@@ -13,10 +13,10 @@ const Reviews = () => {
         })()
     }, [])
     return (
-        <div className="bg-[#011520] mb-32 text-white">
+        <div className="bg-[#011520] my-32 text-white">
             <div className="xl:text-5xl md:text-4xl text-2xl font-semibold leading-tight text-center text-gray-300 sm:mb-0 mb-12">
                 <h1 className="text-4xl font-bold uppercase text-center">
-                    Project Reviews
+                    Reviews
                 </h1>
                 <h2 className="text-xl text-center uppercase ">
                     Happy Client Said

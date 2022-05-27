@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom'
 import auth from '../firebase.init'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { signOut } from 'firebase/auth'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = ({ children }) => {
     const [openInfo, setOpenInfo] = useState(false)
@@ -112,7 +114,14 @@ const Navbar = ({ children }) => {
                             </svg>
                         </label>
                     )}
-                    <div class="flex-1 px-2 mx-2 text-2xl">Tools Maker</div>
+                    <div class="flex-1 px-2 mx-2 text-2xl">
+                        {' '}
+                        <FontAwesomeIcon
+                            className=" text-gray-800 text-2xl mr-4"
+                            icon={faScrewdriverWrench}
+                        />
+                        Tools Maker
+                    </div>
                     <div class="flex-none lg:hidden">
                         <label
                             for="my-drawer-3"
