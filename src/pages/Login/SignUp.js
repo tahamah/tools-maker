@@ -52,6 +52,7 @@ const SignUp = () => {
     if (gUser) {
         const user = {
             name: gUser?.user?.displayName,
+            image: mUser?.photoURL,
             email: gUser?.user?.email,
             education: '',
             phone: '',

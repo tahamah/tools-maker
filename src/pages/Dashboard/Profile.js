@@ -51,7 +51,7 @@ const Profile = () => {
         refetch,
     } = useQuery(['user', userEmail], () => {
         return fetch(
-            `https://morning-ocean-16366.herokuapp.com/getProfile?email=${userEmail}`,
+            `https://morning-ocean-16366.herokuapp.com/getProfile?email=${user?.email}`,
             {
                 headers: {
                     authorization: ` Bearer ${localStorage.getItem(
@@ -64,7 +64,6 @@ const Profile = () => {
     if (isLoading) {
         return <Spinner />
     }
-    console.log(profile)
     const { education, phone, image } = profile
 
     const handleUploadImage = (event) => {
@@ -87,115 +86,105 @@ const Profile = () => {
                 console.log(error)
             })
     }
-
     return (
         <div className="py-20  flex bg-accent justify-center items-center">
-            <div class=" px-8 py-4 w-[900px]  mx-auto mt-16 bg-white rounded-lg shadow-lg dark:bg-gray-800">
-                <h1 className="text-center text-4xl mb-20 mt-10 font-bold">
+            <div class="min-w-[00px] px-8 py-4  mt-28 md:mt-16 bg-white rounded-lg shadow-lg  mx-5">
+                <div class="mt-8">
+                    <img
+                        class="object-cover w-28 h-28 border-2 border-blue-500 rounded-full dark:border-blue-400"
+                        alt="Testimonial avatar"
+                        src={image}
+                    />
+                </div>
+
+                <div class="mt-2  md:mt-0 ">
+                    <label
+                        htmlFor="image"
+                        class={
+                            loading
+                                ? 'btn btn-primary btn-xs loading mt-5 mb-10'
+                                : 'btn btn-primary btn-xs mt-5 mb-10'
+                        }
+                    >
+                        Change Image
+                    </label>
+                </div>
+                <h1 className="text-3xl text-center font-semibold mb-8">
                     My Profile
                 </h1>
-                <div className="flex justify-between ">
-                    <div className=" w-1/3 ml-5 pb-5">
-                        <div class="flex justify-center mt-5 md:justify-start mb-2">
-                            <img
-                                class="object-cover w-44 h-44 border-2 border-blue-500 rounded-full dark:border-blue-400"
-                                alt="Testimonial avatar"
-                                src={image || user?.photoURL}
-                            />
-                        </div>
-                        <label
-                            htmlFor="image"
-                            class={
-                                loading
-                                    ? 'btn btn-primary btn-xs loading mt-5 mb-10'
-                                    : 'btn btn-primary btn-xs mt-5 mb-10'
-                            }
-                        >
-                            Change Image
-                        </label>
-
-                        <div className="flex flex-col gap-10">
-                            <h2 class=" text-2xl font-semibold text-gray-800 dark:text-white md:mt-0 md:text-3xl">
-                                Name: {user?.displayName}
-                            </h2>
-                            <h2 class=" text-xl font-semibold text-gray-800 dark:text-white md:mt-0 ">
-                                Email: {user?.email}
-                            </h2>
-                            <h2 class=" text-xl font-semibold text-gray-800 dark:text-white md:mt-0 ">
-                                Education:
-                                <br /> {education}
-                            </h2>
-                            <h2 class=" text-xl font-semibold text-gray-800 dark:text-white md:mt-0 ">
-                                Phone: <br /> {phone}
-                            </h2>
-                        </div>
+                <div className="md:flex gap-10">
+                    <div>
+                        <h2 class=" text-2xl mb-4 font-semibold text-gray-800 dark:text-white md:mt-0 md:text-3xl">
+                            Name: <br /> {user?.displayName}
+                        </h2>
+                        <h2 class=" text-xl mb-4 font-semibold text-gray-800 dark:text-white md:mt-0 ">
+                            Email: <br /> {user?.email}
+                        </h2>
+                        <h2 class=" text-xl mb-4 font-semibold text-gray-800 dark:text-white md:mt-0 ">
+                            Education:
+                            <br /> {education}
+                        </h2>
+                        <h2 class=" text-xl font-semibold text-gray-800 dark:text-white md:mt-0 ">
+                            Phone: <br /> {phone}
+                        </h2>
                     </div>
-
-                    <div class="w-full pl-20 flex items-end ">
-                        <div class="card-body">
-                            <form onSubmit={handleSubmit(onSubmit)}>
-                                <div class="form-control">
-                                    <label htmlFor="education" class="label">
-                                        <span class="label-text">
-                                            Education:
-                                        </span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="education"
-                                        class="input input-bordered"
-                                        {...register('education', {
-                                            required: 'Education is required',
-                                        })}
-                                    />
-                                    {errors.education ? (
-                                        <p className="text-xs text-red-300 my-2">
-                                            {errors?.education?.message}
-                                        </p>
-                                    ) : (
-                                        ''
-                                    )}
-                                </div>
-                                <div class="form-control mt-4">
-                                    <label class="label">
-                                        <span class="label-text">
-                                            Phone Number:
-                                        </span>
-                                    </label>
-                                    <input
-                                        type="number"
-                                        class="input input-bordered"
-                                        {...register('phone', {
-                                            required: 'Number is Required',
-                                        })}
-                                    />
-                                    {errors.phone ? (
-                                        <p className="text-xs text-red-300 my-2">
-                                            {errors?.phone?.message}
-                                        </p>
-                                    ) : (
-                                        ''
-                                    )}
-                                </div>
-                                <div class="form-control">
-                                    <input
-                                        type="file"
-                                        id="image"
-                                        class="input input-bordered hidden"
-                                        onChange={handleUploadImage}
-                                    />
-                                </div>
-                                <div class="form-control mt-6">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-primary"
-                                        // disabled={!imageURL ? true : false}
-                                    >
-                                        Update Profile
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                    <div className="md:w-[400px]">
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div class="form-control">
+                                <label htmlFor="education" class="label">
+                                    <span class="label-text">Education:</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    id="education"
+                                    class="input input-bordered"
+                                    {...register('education', {
+                                        required: 'Education is required',
+                                    })}
+                                />
+                                {errors.education ? (
+                                    <p className="text-xs text-red-300 my-2">
+                                        {errors?.education?.message}
+                                    </p>
+                                ) : (
+                                    ''
+                                )}
+                            </div>
+                            <div class="form-control mt-4">
+                                <label class="label">
+                                    <span class="label-text">
+                                        Phone Number:
+                                    </span>
+                                </label>
+                                <input
+                                    type="number"
+                                    class="input input-bordered"
+                                    {...register('phone', {
+                                        required: 'Number is Required',
+                                    })}
+                                />
+                                {errors.phone ? (
+                                    <p className="text-xs text-red-300 my-2">
+                                        {errors?.phone?.message}
+                                    </p>
+                                ) : (
+                                    ''
+                                )}
+                            </div>
+                            <div class="form-control">
+                                <input
+                                    type="file"
+                                    id="image"
+                                    class="input input-bordered hidden"
+                                    onChange={handleUploadImage}
+                                />
+                            </div>
+                            <div class="form-control mt-6">
+                                <button type="submit" class="btn btn-primary">
+                                    Update Profile
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

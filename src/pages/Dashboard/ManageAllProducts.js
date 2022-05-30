@@ -44,7 +44,7 @@ const ManageAllProducts = () => {
                 Manage all Products
             </h2>
             <div class="overflow-x-auto">
-                <table class="table w-full">
+                <table class="table w-full ml-80 md:ml-0">
                     <thead>
                         <tr>
                             <th></th>

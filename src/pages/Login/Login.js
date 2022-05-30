@@ -32,26 +32,17 @@ const Login = () => {
         localStorage.setItem('accessToken', token)
         navigate(from, { replace: true })
     }
-
+    console.log(mUser)
     let singInError
-    if (gUser) {
+    if (mUser) {
         const user = {
-            name: gUser?.user?.displayName,
-            email: gUser?.user?.email,
+            name: mUser?.displayName,
+            image: mUser?.photoURL,
+            email: mUser?.email,
             education: '',
             phone: '',
         }
-        fetcher.put(
-            '/profile',
-            { ...user },
-            {
-                headers: {
-                    authorization: ` Bearer ${localStorage.getItem(
-                        'accessToken'
-                    )}`,
-                },
-            }
-        )
+        fetcher.put(`/profile`, { ...user })
     }
 
     if (loading || gLoading || mLoading) {
@@ -61,7 +52,7 @@ const Login = () => {
     if (error || gError) {
         singInError = (
             <p className="text-red-500 pb-2">
-                <small> {error?.message || error?.message}</small>
+                <small> {error?.message || gError?.message}</small>
             </p>
         )
     }

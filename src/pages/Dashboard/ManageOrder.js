@@ -50,6 +50,7 @@ const ManageOrder = () => {
             }
         )
         refetch()
+        console.log(id)
 
         if (data?.data?.acknowledged) {
             toast.success('Successfully Shipped')
@@ -80,7 +81,7 @@ const ManageOrder = () => {
                 Manage all order
             </h2>
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table w-full md:ml-0 ml-96">
                     <thead>
                         <tr>
                             <th></th>

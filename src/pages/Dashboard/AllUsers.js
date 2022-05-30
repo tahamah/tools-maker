@@ -84,7 +84,7 @@ const AllUsers = () => {
             <h2 className="text-3xl md:text-5xl font-bold text-neutral text-center my-10 capitalize">
                 All Users
             </h2>
-            <table className="table w-full">
+            <table className="table ml-96 md:ml-0 w-full">
                 <thead>
                     <tr>
                         <th></th>
